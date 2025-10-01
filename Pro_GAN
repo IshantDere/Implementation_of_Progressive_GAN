@@ -209,6 +209,7 @@ generator = model_gen.to(device)
 discriminator = model_disc.to(device)
 loss_gen = nn.L1Loss()
 loss_disc = nn.BCELoss()
+step = 0
 
 for epoch in range(epoch):
     for latent, img in dataloader:
@@ -253,3 +254,5 @@ for epoch in range(epoch):
         optim_gen.zero_grad()
         total_gen_loss.backward()
         optim_gen.step()
+
+        step += 1
